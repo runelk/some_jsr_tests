@@ -39,7 +39,6 @@ export function foo(name: string): void {
 
 Checking fast check type graph for errors...
 Ensuring type checks...
-[0m[32mCheck[0m file:///path/to/foo.ts
 [0m[33mWarning[0m Aborting due to --dry-run
 
 ```
