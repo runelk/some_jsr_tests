@@ -1,0 +1,12 @@
+{
+  "name": "@runelk/foo",
+  "version": "0.0.1",
+  "exports": "./foo.ts",
+  "tasks": {
+    "run": "deno publish --dry-run 2> stderr.txt",
+    "embed": "npx embedme README.md"
+  },
+  "compilerOptions": {
+    "lib": []
+  }
+}

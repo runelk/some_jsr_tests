@@ -1,0 +1,579 @@
+# 04
+
+## `deno.json`
+
+```js
+// deno.json
+
+{
+  "name": "@runelk/foo",
+  "version": "0.0.1",
+  "exports": "./foo.ts",
+  "tasks": {
+    "run": "deno publish --dry-run 2> stderr.txt",
+    "embed": "npx embedme README.md"
+  },
+  "compilerOptions": {
+    "lib": [
+      "deno.ns"
+    ]
+  }
+}
+```
+
+## `foo.ts`
+
+```ts
+export function foo(name: string): void {
+  console.log(`Hello, ${name}!`);
+}
+```
+
+## Result of running `deno publish --dry-run`
+
+```c
+// stderr.txt
+
+Checking fast check type graph for errors...
+Ensuring type checks...
+[0m[32mCheck[0m file:///path/to/foo.ts
+[0m[1m[31merror[0m: [0m[1mTS2552 [0m[ERROR]: Cannot find name 'PerformanceMark'. Did you mean 'Performance'?
+  mark(markName: string, options?: PerformanceMarkOptions): PerformanceMark;
+[0m[31m                                                            ~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m94[0m:[0m[33m61[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'PerformanceMeasure'.
+  ): PerformanceMeasure;
+[0m[31m     ~~~~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m101[0m:[0m[33m6[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    ffi?: "inherit" | boolean | Array<string | URL>;
+[0m[31m                                               ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m645[0m:[0m[33m48[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    read?: "inherit" | boolean | Array<string | URL>;
+[0m[31m                                                ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m656[0m:[0m[33m49[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    run?: "inherit" | boolean | Array<string | URL>;
+[0m[31m                                               ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m665[0m:[0m[33m48[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    write?: "inherit" | boolean | Array<string | URL>;
+[0m[31m                                                 ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m676[0m:[0m[33m50[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function chdir(directory: string | URL): void;
+[0m[31m                                            ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m1589[0m:[0m[33m45[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m1911[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function openSync(path: string | URL, options?: OpenOptions): FsFile;
+[0m[31m                                          ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m1941[0m:[0m[33m43[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function create(path: string | URL): Promise<FsFile>;
+[0m[31m                                        ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m1955[0m:[0m[33m41[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function createSync(path: string | URL): FsFile;
+[0m[31m                                            ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m1969[0m:[0m[33m45[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+    readonly readable: ReadableStream<Uint8Array>;
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m2331[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WritableStream'.
+    readonly writable: WritableStream<Uint8Array>;
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m2346[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+    readonly readable: ReadableStream<Uint8Array>;
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m2773[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WritableStream'.
+    readonly writable: WritableStream<Uint8Array>;
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m2821[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WritableStream'.
+    readonly writable: WritableStream<Uint8Array>;
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m2855[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AbortSignal'.
+    signal?: AbortSignal;
+[0m[31m             ~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m2933[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3117[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function mkdirSync(path: string | URL, options?: MkdirOptions): void;
+[0m[31m                                           ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3136[0m:[0m[33m44[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function chmod(path: string | URL, mode: number): Promise<void>;
+[0m[31m                                       ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3288[0m:[0m[33m40[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function chmodSync(path: string | URL, mode: number): void;
+[0m[31m                                           ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3306[0m:[0m[33m44[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3328[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3353[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3386[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function removeSync(path: string | URL, options?: RemoveOptions): void;
+[0m[31m                                            ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3405[0m:[0m[33m45[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    oldpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3427[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    newpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3428[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    oldpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3452[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    newpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3453[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3470[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function readTextFileSync(path: string | URL): string;
+[0m[31m                                                  ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3487[0m:[0m[33m51[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3505[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function readFileSync(path: string | URL): Uint8Array;
+[0m[31m                                              ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3524[0m:[0m[33m47[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function realPath(path: string | URL): Promise<string>;
+[0m[31m                                          ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3629[0m:[0m[33m43[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function realPathSync(path: string | URL): string;
+[0m[31m                                              ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3651[0m:[0m[33m47[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function readDir(path: string | URL): AsyncIterable<DirEntry>;
+[0m[31m                                         ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3689[0m:[0m[33m42[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function readDirSync(path: string | URL): Iterable<DirEntry>;
+[0m[31m                                             ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3707[0m:[0m[33m46[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    fromPath: string | URL,
+[0m[31m                       ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3725[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    toPath: string | URL,
+[0m[31m                     ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3726[0m:[0m[33m22[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    fromPath: string | URL,
+[0m[31m                       ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3745[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    toPath: string | URL,
+[0m[31m                     ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3746[0m:[0m[33m22[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function readLink(path: string | URL): Promise<string>;
+[0m[31m                                          ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3763[0m:[0m[33m43[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function readLinkSync(path: string | URL): string;
+[0m[31m                                              ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3780[0m:[0m[33m47[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function lstat(path: string | URL): Promise<FileInfo>;
+[0m[31m                                       ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3797[0m:[0m[33m40[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function lstatSync(path: string | URL): FileInfo;
+[0m[31m                                           ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3814[0m:[0m[33m44[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function stat(path: string | URL): Promise<FileInfo>;
+[0m[31m                                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3830[0m:[0m[33m39[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+  export function statSync(path: string | URL): FileInfo;
+[0m[31m                                          ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3846[0m:[0m[33m43[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AbortSignal'.
+    signal?: AbortSignal;
+[0m[31m             ~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3875[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3897[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+    data: Uint8Array | ReadableStream<Uint8Array>,
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3898[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3921[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3940[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+    data: string | ReadableStream<string>,
+[0m[31m                   ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3941[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m3959[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    cmd: readonly string[] | [string | URL, ...string[]];
+[0m[31m                                       ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4216[0m:[0m[33m40[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WritableStream'.
+        writable: WritableStream<Uint8Array>;
+[0m[31m                  ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4307[0m:[0m[33m19[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WritableStream'.
+      : (Writer & Closer & { writable: WritableStream<Uint8Array> }) | null;
+[0m[31m                                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4309[0m:[0m[33m40[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+        readable: ReadableStream<Uint8Array>;
+[0m[31m                  ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4313[0m:[0m[33m19[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+      : (Reader & Closer & { readable: ReadableStream<Uint8Array> }) | null;
+[0m[31m                                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4315[0m:[0m[33m40[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+        readable: ReadableStream<Uint8Array>;
+[0m[31m                  ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4319[0m:[0m[33m19[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+      : (Reader & Closer & { readable: ReadableStream<Uint8Array> }) | null;
+[0m[31m                                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4321[0m:[0m[33m40[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    constructor(command: string | URL, options?: CommandOptions);
+[0m[31m                                  ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4571[0m:[0m[33m35[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WritableStream'.
+    get stdin(): WritableStream<Uint8Array>;
+[0m[31m                 ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4607[0m:[0m[33m18[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+    get stdout(): ReadableStream<Uint8Array>;
+[0m[31m                  ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4608[0m:[0m[33m19[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+    get stderr(): ReadableStream<Uint8Array>;
+[0m[31m                  ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4609[0m:[0m[33m19[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    cwd?: string | URL;
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4648[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AbortSignal'.
+    signal?: AbortSignal;
+[0m[31m             ~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4674[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    command?: string | URL;
+[0m[31m                       ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4858[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path?: string | URL;
+[0m[31m                    ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4874[0m:[0m[33m21[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path?: string | URL;
+[0m[31m                    ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4890[0m:[0m[33m21[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path?: string | URL;
+[0m[31m                    ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4953[0m:[0m[33m21[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Event'.
+    "change": Event;
+[0m[31m              ~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4990[0m:[0m[33m15[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'EventTarget'.
+  export class PermissionStatus extends EventTarget {
+[0m[31m                                        ~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4997[0m:[0m[33m41[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Event'.
+    onchange: ((this: PermissionStatus, ev: Event) => any) | null;
+[0m[31m                                            ~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m4999[0m:[0m[33m45[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AddEventListenerOptions'.
+      options?: boolean | AddEventListenerOptions,
+[0m[31m                          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5014[0m:[0m[33m27[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'EventListenerOrEventListenerObject'.
+      listener: EventListenerOrEventListenerObject,
+[0m[31m                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5018[0m:[0m[33m17[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AddEventListenerOptions'.
+      options?: boolean | AddEventListenerOptions,
+[0m[31m                          ~~~~~~~~~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5019[0m:[0m[33m27[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'EventListenerOptions'.
+      options?: boolean | EventListenerOptions,
+[0m[31m                          ~~~~~~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5027[0m:[0m[33m27[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'EventListenerOrEventListenerObject'.
+      listener: EventListenerOrEventListenerObject,
+[0m[31m                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5031[0m:[0m[33m17[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'EventListenerOptions'.
+      options?: boolean | EventListenerOptions,
+[0m[31m                          ~~~~~~~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5032[0m:[0m[33m27[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    oldpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5348[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    newpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5349[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    oldpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5369[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    newpath: string | URL,
+[0m[31m                      ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5370[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5563[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'URL'.
+    path: string | URL,
+[0m[31m                   ~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5583[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Request'.
+    readonly request: Request;
+[0m[31m                      ~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5600[0m:[0m[33m23[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+    respondWith(r: Response | PromiseLike<Response>): Promise<void>;
+[0m[31m                   ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5608[0m:[0m[33m20[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+    respondWith(r: Response | PromiseLike<Response>): Promise<void>;
+[0m[31m                                          ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5608[0m:[0m[33m43[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+    response: Response;
+[0m[31m              ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5699[0m:[0m[33m15[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WebSocket'.
+    socket: WebSocket;
+[0m[31m            ~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5702[0m:[0m[33m13[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Request'.
+    request: Request,
+[0m[31m             ~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5760[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AbortSignal'.
+    signal?: AbortSignal;
+[0m[31m             ~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m5834[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Request'.
+    request: Request,
+[0m[31m             ~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6217[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+  ) => Response | Promise<Response>;
+[0m[31m       ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6219[0m:[0m[33m8[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+  ) => Response | Promise<Response>;
+[0m[31m                          ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6219[0m:[0m[33m27[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AbortSignal'.
+    signal?: AbortSignal;
+[0m[31m             ~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6242[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+    onError?: (error: unknown) => Response | Promise<Response>;
+[0m[31m                                  ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6248[0m:[0m[33m35[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+    onError?: (error: unknown) => Response | Promise<Response>;
+[0m[31m                                                     ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6248[0m:[0m[33m54[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'AbortSignal'.
+    signal?: AbortSignal;
+[0m[31m             ~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6279[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+    onError?: (error: unknown) => Response | Promise<Response>;
+[0m[31m                                  ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6282[0m:[0m[33m35[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+    onError?: (error: unknown) => Response | Promise<Response>;
+[0m[31m                                                     ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6282[0m:[0m[33m54[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Request'.
+    request: Request,
+[0m[31m             ~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6306[0m:[0m[33m14[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+  ) => Response | Promise<Response>;
+[0m[31m       ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6308[0m:[0m[33m8[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'Response'.
+  ) => Response | Promise<Response>;
+[0m[31m                          ~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.ns.d.ts[0m:[0m[33m6308[0m:[0m[33m27[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'ReadableStream'.
+    readonly readable: ReadableStream<Uint8Array>;
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.net.d.ts[0m:[0m[33m94[0m:[0m[33m24[0m
+
+[0m[1mTS2304 [0m[ERROR]: Cannot find name 'WritableStream'.
+    readonly writable: WritableStream<Uint8Array>;
+[0m[31m                       ~~~~~~~~~~~~~~[0m
+    at [0m[36masset:///lib.deno.net.d.ts[0m:[0m[33m95[0m:[0m[33m24[0m
+
+Found 107 errors.
+
+You may have discovered a bug in Deno's fast check implementation. Fast check is still early days and we would appreciate if you log a bug if you believe this is one: https://github.com/denoland/deno/issues/
+
+```

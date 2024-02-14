@@ -1,0 +1,26 @@
+Checking fast check type graph for errors...
+Ensuring type checks...
+[0m[32mCheck[0m file:///path/to/foo.ts
+[0m[1m[31merror[0m: [0m[1mTS2318 [0m[ERROR]: Cannot find global type 'Array'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'Boolean'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'CallableFunction'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'Function'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'IArguments'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'NewableFunction'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'Number'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'Object'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'RegExp'.
+
+[0m[1mTS2318 [0m[ERROR]: Cannot find global type 'String'.
+
+Found 10 errors.
+
+You may have discovered a bug in Deno's fast check implementation. Fast check is still early days and we would appreciate if you log a bug if you believe this is one: https://github.com/denoland/deno/issues/

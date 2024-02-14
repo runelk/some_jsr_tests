@@ -1,0 +1,39 @@
+# 01
+
+## `deno.json`
+
+```js
+// deno.json
+
+{
+  "name": "@runelk/foo",
+  "version": "0.0.1",
+  "exports": "./foo.ts",
+  "tasks": {
+    "run": "deno publish --dry-run 2> stderr.txt",
+    "embed": "npx embedme README.md"
+  }
+}
+```
+
+## `foo.ts`
+
+```ts
+// foo.ts
+
+export function foo(name: string): void {
+  console.log(`Hello, ${name}!`);
+}
+
+```
+
+## Result of running `deno publish --dry-run`
+
+```c
+// stderr.txt
+
+Checking fast check type graph for errors...
+Ensuring type checks...
+[0m[33mWarning[0m Aborting due to --dry-run
+
+```
